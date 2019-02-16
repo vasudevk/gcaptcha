@@ -18,8 +18,8 @@ import java.util.List;
 })
 public class VerifyResponse {
 
-    @JsonProperty("apk_package_name")
-    private String apkPackageName;
+    @JsonProperty("hostname")
+    private String hostname;
 
     @JsonProperty("success")
     private boolean success;
@@ -38,12 +38,12 @@ public class VerifyResponse {
         this.errorCodes = errorCodes;
     }
 
-    public String getApkPackageName() {
-        return apkPackageName;
+    public String getHostname() {
+        return hostname;
     }
 
-    public void setApkPackageName(String apkPackageName) {
-        this.apkPackageName = apkPackageName;
+    public void setHostname(String hostname) {
+        this.hostname = hostname;
     }
 
     public boolean isSuccess() {

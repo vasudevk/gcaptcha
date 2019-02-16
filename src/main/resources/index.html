@@ -1,7 +1,7 @@
 <<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-    <script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     <meta charset="utf-8">
     <title></title>
 </head>
@@ -11,24 +11,9 @@
         <h1>Login </h1>
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
-                <label for="email">Email address:</label>
-                <input type="email" class="form-control" formControlName="email" id="email">
-                <div *ngIf="submitted && loginForm.controls.email.errors" class="error">
-                    <div *ngIf="loginForm.controls.email.errors.required">Email is required</div>
-                </div>
+                <div class="g-recaptcha" data-sitekey="6Lcp9JEUAAAAALZELiYHD846U5uY11yKeTemIEGJ"></div>
             </div>
-            <div class="form-group">
-                <label for="pwd">Password:</label>
-                <input type="password" class="form-control" formControlName="password" id="pwd">
-                <div *ngIf="submitted && loginForm.controls.password.errors" class="error">
-                    <div *ngIf="loginForm.controls.password.errors.required">Password is required</div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="g-recaptcha" data-sitekey="6LdB8pEUAAAAAErKoFBNPC-KTctQxECy29cDctRb"></div>
-                <div *ngIf="captchaError" class="error">Recaptcha not verified.</div>
-            </div>
-            <button class="btn btn-default">Login</button>
+            <button class="btn btn-default">reCAPTCHA V2</button>
             <div *ngIf="invalidLogin" class="error">
                 <div></div>
             </div>

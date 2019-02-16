@@ -13,7 +13,7 @@ public class RecaptchaValidator {
 
     private final RestTemplate restTemplate;
 
-    private String recaptchaSecret = "6LdB8pEUAAAAAAVxfjb36H60yWTpGDk2YcXmJmr_";
+    private String recaptchaSecret = "6Lcp9JEUAAAAAEnzQmwAEqscNrBBE-aMAQbYcuhY";
     private String recaptchaVerifyUrl = "https://www.google.com/recaptcha/api/siteverify";
 
     public RecaptchaValidator(RestTemplateBuilder restTemplateBuilder) {
