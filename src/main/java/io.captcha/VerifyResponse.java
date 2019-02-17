@@ -14,7 +14,8 @@ import java.util.List;
         "success",
         "challenge_ts",
         "hostname",
-        "error-codes"
+        "error-codes",
+        "score"
 })
 public class VerifyResponse {
 
@@ -29,6 +30,17 @@ public class VerifyResponse {
 
     @JsonProperty("error-codes")
     private List<String> errorCodes;
+
+    @JsonProperty("score")
+    private String score;
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
+    }
 
     public List<String> getErrorCodes() {
         return errorCodes;

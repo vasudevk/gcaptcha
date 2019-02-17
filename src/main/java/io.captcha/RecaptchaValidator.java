@@ -13,7 +13,7 @@ public class RecaptchaValidator {
 
     private final RestTemplate restTemplate;
 
-    private String recaptchaSecret = "6Lcp9JEUAAAAAEnzQmwAEqscNrBBE-aMAQbYcuhY";
+    private String recaptchaSecret = "6LdB8pEUAAAAAAVxfjb36H60yWTpGDk2YcXmJmr_";
     private String recaptchaVerifyUrl = "https://www.google.com/recaptcha/api/siteverify";
 
     public RecaptchaValidator(RestTemplateBuilder restTemplateBuilder) {
@@ -21,8 +21,15 @@ public class RecaptchaValidator {
     }
 
     RecaptchaResponse recaptchaResponse(RecaptchaRequest recaptchaRequest) {
+
         RecaptchaResponse recaptchaResponse = new RecaptchaResponse();
-        recaptchaResponse.setValid(verify(recaptchaRequest.getResponse()));
+        VerifyResponse verifyResponse = verify(recaptchaRequest.getResponse());
+
+        if (Double.valueOf(verifyResponse.getScore()) >= 0.9)
+            recaptchaResponse.setValid(verifyResponse.isSuccess());
+        else
+            recaptchaResponse.setValid(false);
+
         return recaptchaResponse;
     }
 
@@ -32,7 +39,7 @@ public class RecaptchaValidator {
      * @param response
      * @return
      */
-    private boolean verify(String response) {
+    private VerifyResponse verify(String response) {
         MultiValueMap<Object, Object> map = new LinkedMultiValueMap<>();
         map.add("secret", recaptchaSecret);
         map.add("response", response);
@@ -44,6 +51,6 @@ public class RecaptchaValidator {
             System.out.print(e.getMessage());
         }
 
-        return verifyResponse.isSuccess();
+        return verifyResponse;
     }
 }

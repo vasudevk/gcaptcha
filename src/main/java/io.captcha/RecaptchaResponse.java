@@ -8,7 +8,8 @@ public class RecaptchaResponse {
         return isValid;
     }
 
-    public void setValid(boolean valid) {
+    void setValid(boolean valid) {
         isValid = valid;
     }
+
 }
